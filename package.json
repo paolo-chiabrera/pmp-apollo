@@ -10,6 +10,10 @@
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-preset-env": "^1.6.1",
+    "eslint": "^4.19.1",
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-plugin-import": "^2.10.0",
+    "husky": "^0.14.3",
     "nodemon": "^1.17.2"
   },
   "dependencies": {
@@ -25,7 +29,10 @@
   },
   "scripts": {
     "dev": "nodemon index.js --exec babel-node",
+    "lint": "eslint *.js",
+    "precommit": "npm run lint",
+    "prepush": "npm run lint && npm run test",
     "start": "node index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\""
   }
 }

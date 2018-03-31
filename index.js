@@ -12,26 +12,26 @@ import resolvers from './resolvers';
 mongoose.connect(config.get('mongo.uri'));
 
 const schema = makeExecutableSchema({
-    typeDefs,
-    resolvers,
+  typeDefs,
+  resolvers,
 });
 
 const app = express();
 
 const engine = new ApolloEngine({
-    apiKey: config.get('apollo.apiKey'),
+  apiKey: config.get('apollo.apiKey'),
 });
 
 app.use('/graphql', bodyParser.json(), graphqlExpress({
-    cacheControl: true,
-    context: { ImageModel },
-    schema,
-    tracing: true,
+  cacheControl: true,
+  context: { ImageModel },
+  schema,
+  tracing: true,
 }));
 
 app.use('/graphiql', graphiqlExpress({ endpointURL: '/graphql' }));
 
 engine.listen({
-    port: config.get('port'),
-    expressApp: app,
+  port: config.get('port'),
+  expressApp: app,
 });
