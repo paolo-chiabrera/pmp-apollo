@@ -30,7 +30,7 @@
   },
   "scripts": {
     "build": "babel src --out-dir lib --source-maps",
-    "dev": "nodemon index.js --exec babel-node",
+    "dev": "nodemon src/index.js --exec babel-node",
     "lint": "eslint *.js",
     "precommit": "npm run lint",
     "prepush": "npm run lint && npm run test",
